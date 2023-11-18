@@ -1,0 +1,17 @@
+# Application configurations
+app:
+  log: true
+# Serveur MQTT configurations
+mqtt:
+  broker: "192.168.1.2"
+  port: 1883
+  username: "admin"
+  password: "password"
+  clientid: "mqtt2db"
+  topic: "generator/#"
+  script: 'var obj = JSON.parse(msg);
+	  var load = [obj.time, topic, "load", obj.load];
+	  var power = [obj.time, topic, "power", obj.power];
+	  var temperature = [obj.time, topic, "temperature", obj.temperature];
+	  var fuel = [obj.time, topic, "fuel", obj.fuel];
+	  var value = [load, power, temperature, fuel];'
